@@ -1,0 +1,59 @@
+<!-- <h2>Welcome to Dashboard</h2>
+<button (click)="logout()">Logout</button> -->
+
+<!-- <div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>📊 Dashboard</h1>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </header>
+
+  <section class="stats-grid">
+    <div class="card">
+      <h3>Total Users</h3>
+      <p>150</p>
+    </div>
+    <div class="card">
+      <h3>Active Users</h3>
+      <p>120</p>
+    </div>
+    <div class="card">
+      <h3>New Signups</h3>
+      <p>30</p>
+    </div>
+  </section>
+
+  <section class="coming-soon">
+    <p>📦 More features coming soon...</p>
+  </section>
+</div> -->
+
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>📊 Dashboard</h1>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </header>
+
+  <section class="stats-grid">
+    <div class="card">
+      <h3>Total Users</h3>
+      <p>150</p>
+    </div>
+    <div class="card">
+      <h3>Active Users</h3>
+      <p>120</p>
+    </div>
+    <div class="card">
+      <h3>New Signups</h3>
+      <p>30</p>
+    </div>
+  </section>
+
+  <!-- ✅ Add User Table Component here -->
+  <app-user-table></app-user-table>
+   <!-- After Stats Grid or Before User Table -->
+<app-user-chart></app-user-chart>
+
+  <section class="coming-soon">
+    <p>📦 More features coming soon...</p>
+  </section>
+</div>

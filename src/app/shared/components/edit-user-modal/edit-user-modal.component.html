@@ -1,0 +1,17 @@
+<h2>Edit User</h2>
+<form>
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name" name="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email" name="email" />
+  </mat-form-field>
+
+  <div style="text-align: right; margin-top: 1rem;">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+</form>

@@ -1,0 +1,60 @@
+/* mat-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+} */
+
+/* .form-section {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+} */
+
+/* .form-section {
+  margin-bottom: 16px;
+} */
+
+
+.settings-card {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+}
+
+.settings-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.setting-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.section-label {
+  font-weight: 500;
+  color: #444;
+  font-size: 16px;
+}
+
+.language-dropdown {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.button-section {
+  text-align: center;
+  margin-top: 30px;
+}

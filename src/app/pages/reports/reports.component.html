@@ -1,0 +1,168 @@
+
+<!-- reports.component.html -->
+<!-- <div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Reports</h2>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let report of reports" [ngClass]="report.color" class="text-white p-4 rounded-lg">
+      <h3 class="text-lg">{{ report.title }}</h3>
+      <p class="text-2xl font-bold">{{ report.value }}</p>
+      <p class="text-sm">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div> -->
+<!-- <div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Reports</h2>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let report of reports" [class]="report.color" class="text-white p-4 rounded-lg">
+      <h3 class="text-lg">{{ report.title }}</h3>
+      <p class="text-2xl font-bold">{{ report.value }}</p>
+      <p class="text-sm">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div>
+ -->
+
+ <!-- <div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Reports</h2>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let report of reports" [class]="report.color" class="text-white p-4 rounded-lg">
+      <h3 class="text-lg">{{ report.title }}</h3>
+      <p class="text-2xl font-bold">{{ report.value }}</p>
+      <p class="text-sm">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div> -->
+<!-- <div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Reports</h2>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let report of reports" [class]="report.color" class="text-white p-4 rounded-lg">
+      <h3 class="text-lg">{{ report.title }}</h3>
+      <p class="text-2xl font-bold">{{ report.value }}</p>
+      <p class="text-sm">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div>
+ -->
+
+ <!-- <div class="p-4">
+  <h2 class="text-xl font-bold mb-4">Reports</h2>
+
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let report of reports" [class]="report.color" class="text-white p-4 rounded-lg">
+      <h3 class="text-lg">{{ report.title }}</h3>
+      <p class="text-2xl font-bold">{{ report.value }}</p>
+      <p class="text-sm">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div> -->
+<!-- 
+<div class="p-6 max-w-5xl mx-auto">
+  <h2 class="text-3xl font-extrabold mb-6 text-gray-900 dark:text-gray-100">Reports Overview</h2>
+
+  <div class="flex flex-col sm:flex-row sm:justify-between items-center mb-6 gap-4">
+    <button
+      (click)="sortBy('trend')"
+      class="px-4 py-2 rounded bg-indigo-600 text-white hover:bg-indigo-700 transition"
+    >
+      Sort by Trend %
+    </button>
+    <button
+      (click)="sortBy('value')"
+      class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700 transition"
+    >
+      Sort by Value
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <div
+      *ngFor="let report of reports"
+      [class]="report.color"
+      class="text-white p-6 rounded-lg shadow-lg transform transition hover:scale-105"
+    >
+      <h3 class="text-xl font-semibold mb-2">{{ report.title }}</h3>
+      <p class="text-4xl font-bold">{{ report.value }}</p>
+      <p class="text-lg mt-1">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="mt-10 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+    <canvas
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'"
+      class="w-full h-64"
+    >
+    </canvas>
+  </div>
+</div> -->
+
+<div class="reports-container">
+  <h2 class="reports-title">Reports Overview</h2>
+
+  <div class="reports-actions">
+    <button (click)="sortBy('trend')" class="btn btn-indigo">Sort by Trend %</button>
+    <button (click)="sortBy('value')" class="btn btn-green">Sort by Value</button>
+  </div>
+
+  <div class="reports-grid">
+    <div *ngFor="let report of reports" [ngClass]="report.color" class="report-card">
+      <h3 class="report-title">{{ report.title }}</h3>
+      <p class="report-value">{{ report.value }}</p>
+      <p class="report-trend">+{{ report.trend }}%</p>
+    </div>
+  </div>
+
+  <div class="chart-wrapper">
+    <canvas baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+</div>

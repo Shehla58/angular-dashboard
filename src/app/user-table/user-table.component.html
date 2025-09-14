@@ -1,0 +1,33 @@
+
+
+<div class="user-table">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search user..."
+    class="search-input"
+  />
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>👤 Name</th>
+        <th>📧 Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredUsers">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">⬅ Prev</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next ➡</button>
+  </div>
+</div>

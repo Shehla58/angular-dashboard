@@ -1,0 +1,33 @@
+
+
+<mat-card class="notification-card">
+  <div class="header">
+    <h2>🔔 Notifications</h2>
+    <button mat-icon-button color="warn" (click)="clearNotifications()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  <div class="toggle-section">
+    <mat-slide-toggle
+      [(ngModel)]="soundEnabled"
+      (change)="toggleSound($event)"
+    >
+      Enable Notification Sound
+    </mat-slide-toggle>
+  </div>
+
+  <mat-list *ngIf="notifications.length > 0; else noData">
+    <mat-list-item *ngFor="let note of notifications">
+      <mat-icon matListIcon>{{ note.type }}</mat-icon>
+      <div class="notification-text">
+        <h4 matLine>{{ note.title }}</h4>
+        <p matLine class="time">🕒 {{ note.time }}</p>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+  <ng-template #noData>
+    <p class="no-data">🎉 You're all caught up!</p>
+  </ng-template>
+</mat-card>

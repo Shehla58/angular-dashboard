@@ -1,0 +1,63 @@
+
+
+<mat-card class="profile-card">
+  <div class="image-section">
+    <img [src]="user.image || 'https://via.placeholder.com/120'" alt="Profile Image" />
+    <div *ngIf="isEdit">
+      <input type="file" (change)="onImageChange($event)" />
+    </div>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab label="Personal Info">
+      <div class="profile-details">
+        <mat-form-field *ngIf="isEdit" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="user.name" />
+        </mat-form-field>
+        <p *ngIf="!isEdit"><strong>Name:</strong> {{ user.name }}</p>
+
+        <mat-form-field *ngIf="isEdit" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="user.email" />
+        </mat-form-field>
+        <p *ngIf="!isEdit"><strong>Email:</strong> {{ user.email }}</p>
+
+        <mat-form-field *ngIf="isEdit" appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput [(ngModel)]="user.phone" />
+        </mat-form-field>
+        <p *ngIf="!isEdit"><strong>Phone:</strong> {{ user.phone }}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Settings">
+      <div class="profile-details">
+        <mat-form-field *ngIf="isEdit" appearance="fill">
+          <mat-label>Facebook</mat-label>
+          <input matInput [(ngModel)]="user.facebook" />
+        </mat-form-field>
+        <p *ngIf="!isEdit"><strong>Facebook:</strong> {{ user.facebook }}</p>
+
+        <mat-form-field *ngIf="isEdit" appearance="fill">
+          <mat-label>LinkedIn</mat-label>
+          <input matInput [(ngModel)]="user.linkedin" />
+        </mat-form-field>
+        <p *ngIf="!isEdit"><strong>LinkedIn:</strong> {{ user.linkedin }}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Activity">
+      <p>Recent login, last password change, etc. (Mock data)</p>
+    </mat-tab>
+  </mat-tab-group>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="toggleEdit()">
+      {{ isEdit ? 'Cancel' : 'Edit' }}
+    </button>
+    <button *ngIf="isEdit" mat-raised-button color="accent" (click)="saveChanges()">
+      Save
+    </button>
+  </div>
+</mat-card>

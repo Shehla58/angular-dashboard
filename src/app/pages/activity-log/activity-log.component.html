@@ -1,0 +1,333 @@
+<!-- 
+<mat-card class="log-card">
+  <div class="header">
+    <h2>📊 User Activity Log</h2>
+    <mat-form-field appearance="outline">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput placeholder="Search activity..." [(ngModel)]="search" />
+    </mat-form-field>
+  </div>
+
+  <mat-list *ngIf="filteredLogs.length > 0; else noData">
+    <mat-list-item *ngFor="let log of filteredLogs">
+      <mat-icon matListIcon>{{ log.icon }}</mat-icon>
+      <div>
+        <h4 matLine>{{ log.action }}</h4>
+        <p matLine class="time">🕒 {{ log.time }}</p>
+      </div>
+    </mat-list-item>
+  </mat-list>
+
+<mat-paginator
+  [length]="filteredLogsCount"
+  [pageSize]="logsPerPage"
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange($event)"
+></mat-paginator>
+
+  <ng-template #noData>
+    <p class="no-data">No activities found 🔍</p>
+  </ng-template>
+</mat-card> -->
+
+<!-- <div class="activity-log">
+  <h2>🔍 Activity Log</h2>
+
+  <div class="filter-section">
+    <input type="text" placeholder="Search by action..." [(ngModel)]="search" (input)="applyFilter()" />
+    <input type="date" [(ngModel)]="fromDate" (change)="applyFilter()" />
+    <input type="date" [(ngModel)]="toDate" (change)="applyFilter()" />
+    <button (click)="exportToCSV()">Export CSV</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Icon</th>
+        <th>Action</th>
+        <th>Timestamp</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of paginatedLogs" [class]="getLogClass(log.action)">
+        <td><span class="material-icons">{{ getLogIcon(log.action) }}</span></td>
+        <td>{{ log.action }}</td>
+        <td>{{ log.timestamp | date:'medium' }}</td>
+        <td>{{ log.user }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1">Previous</button>
+    <span>Page {{ page }} of {{ totalPages }}</span>
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages">Next</button>
+  </div>
+</div> -->
+
+<!-- <div class="activity-log">
+  <h2>🔍 Activity Log</h2>
+
+  <div class="filter-section">
+    <input type="text" placeholder="Search by action..." [(ngModel)]="search" (input)="applyFilter()" />
+    <input type="date" [(ngModel)]="fromDate" (change)="applyFilter()" />
+    <input type="date" [(ngModel)]="toDate" (change)="applyFilter()" />
+    <button (click)="exportToCSV()">Export CSV</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Icon</th>
+        <th>Action</th>
+        <th>Timestamp</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of paginatedLogs" [class]="getLogClass(log.action)">
+        <td><span class="material-icons">{{ getLogIcon(log.action) }}</span></td>
+        <td>{{ log.action }}</td>
+        <td>{{ log.timestamp | date:'medium' }}</td>
+        <td>{{ log.user }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+
+  <!-- ⭐️ Improved Pagination Section -->
+  <!-- <div class="pagination">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1">Previous</button>
+
+    <ng-container *ngFor="let p of getPageNumbers()">
+      <button
+        [class.active]="p === page"
+        (click)="goToPage(p)">
+        {{ p }}
+      </button>
+    </ng-container>
+
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages">Next</button>
+  </div>
+</div> -->
+<!-- <div class="pagination">
+  <button (click)="goToPage(page - 1)" [disabled]="page === 1">Previous</button>
+
+  <button *ngIf="hasLeftEllipsis()" (click)="goToPage(1)">1</button>
+  <span *ngIf="hasLeftEllipsis()">...</span>
+
+  <ng-container *ngFor="let p of getPageNumbers()">
+    <button [class.active]="p === page" (click)="goToPage(p)">
+      {{ p }}
+    </button>
+  </ng-container>
+
+  <span *ngIf="hasRightEllipsis()">...</span>
+  <button *ngIf="hasRightEllipsis()" (click)="goToPage(totalPages)">
+    {{ totalPages }}
+  </button>
+
+  <button (click)="goToPage(page + 1)" [disabled]="page === totalPages">Next</button>
+</div> -->
+
+<!-- <div class="max-w-5xl mx-auto p-4 space-y-4">
+  <h1 class="text-2xl font-bold text-center text-gray-800">Activity Log</h1>
+
+  Filters
+  <div class="flex flex-wrap gap-4 justify-between items-center">
+    <input type="text" [(ngModel)]="search" (input)="applyFilter()" placeholder="Search..."
+           class="border rounded px-4 py-2 w-full md:w-1/3 shadow-sm" />
+
+    <div class="flex gap-2">
+      <input type="date" [(ngModel)]="fromDate" (change)="applyFilter()" class="border px-2 py-1 rounded" />
+      <input type="date" [(ngModel)]="toDate" (change)="applyFilter()" class="border px-2 py-1 rounded" />
+    </div>
+
+    <button (click)="exportToCSV()"
+            class="bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700">
+      Export Excel
+    </button>
+  </div>
+
+  Table
+  <! <div class="overflow-x-auto mt-4 rounded shadow bg-white">
+    <table class="min-w-full text-sm text-left">
+      <thead class="bg-gray-200 text-gray-600 uppercase">
+        <tr>
+          <th class="px-4 py-2">#</th>
+          <th class="px-4 py-2">Action</th>
+          <th class="px-4 py-2">Timestamp</th>
+          <th class="px-4 py-2">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of paginatedLogs" class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">{{ log.id }}</td>
+          <td class="px-4 py-2">{{ log.action }}</td>
+          <td class="px-4 py-2">{{ log.timestamp | date:'short' }}</td>
+          <td class="px-4 py-2 capitalize">{{ log.type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-Pagination -->
+  <!-- <div class="flex justify-center items-center mt-4 gap-2">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1"
+            class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50">
+      Prev
+    </button>
+
+    <button *ngIf="hasLeftEllipsis()" disabled class="px-2">...</button>
+
+    <button *ngFor="let p of getPageNumbers()"
+            (click)="goToPage(p)"
+            [ngClass]="{'bg-blue-600 text-white': p === page}"
+            class="px-3 py-1 rounded hover:bg-blue-100">
+      {{ p }}
+    </button>
+
+    <button *ngIf="hasRightEllipsis()" disabled class="px-2">...</button>
+
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages"
+            class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50">
+      Next
+    </button>
+  </div>
+</div>   -->
+
+ <!-- <div class="max-w-5xl mx-auto p-4 space-y-4">
+  <h1 class="text-2xl font-bold text-center text-gray-800">Activity Log</h1>
+
+  <!- <! Filters --> 
+ <!-- <div class="flex flex-wrap gap-4 justify-between items-center">
+    <input type="text" [(ngModel)]="search" (input)="applyFilter()" placeholder="Search..."
+           class="border rounded px-4 py-2 w-full md:w-1/3 shadow-sm" />
+
+    <div class="flex gap-2">
+      <input type="date" [(ngModel)]="fromDate" (change)="applyFilter()" class="border px-2 py-1 rounded" />
+      <input type="date" [(ngModel)]="toDate" (change)="applyFilter()" class="border px-2 py-1 rounded" />
+    </div>
+
+    <button (click)="exportToCSV()"
+            class="bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700">
+      Export Excel
+    </button>
+  </div> -->
+
+  <!-- <!- Table --> 
+   <!-- <div class="overflow-x-auto mt-4 rounded shadow bg-white">
+    <table class="min-w-full text-sm text-left">
+      <thead class="bg-gray-200 text-gray-600 uppercase">
+        <tr>
+          <th class="px-4 py-2">#</th>
+          <th class="px-4 py-2">Action</th>
+          <th class="px-4 py-2">Timestamp</th>
+          <th class="px-4 py-2">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of paginatedLogs" class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2">{{ log.id }}</td>
+          <td class="px-4 py-2">{{ log.action }}</td>
+          <td class="px-4 py-2">{{ log.timestamp | date:'short' }}</td>
+          <td class="px-4 py-2 capitalize flex items-center gap-2">
+            <mat-icon>{{ getLogIcon(log) }}</mat-icon>
+            {{ log.type }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  -->
+
+  <!-- <!- Pagination > -->
+  <!-- <div class="flex justify-center items-center mt-4 gap-2">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1"
+            class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50">
+      Prev
+    </button>
+
+    <button *ngIf="hasLeftEllipsis()" disabled class="px-2">...</button>
+
+    <button *ngFor="let p of getPageNumbers()"
+            (click)="goToPage(p)"
+            [ngClass]="{'bg-blue-600 text-white': p === page}"
+            class="px-3 py-1 rounded hover:bg-blue-100">
+      {{ p }}
+    </button>
+
+    <button *ngIf="hasRightEllipsis()" disabled class="px-2">...</button>
+
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages"
+            class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50">
+      Next
+    </button>
+  </div>
+</div>   -->
+
+<div class="activity-log-container">
+  <h1 class="title">Activity Log</h1>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input type="text" [(ngModel)]="search" (input)="applyFilter()" placeholder="Search..." class="search-input" />
+
+    <div class="date-filters">
+      <input type="date" [(ngModel)]="fromDate" (change)="applyFilter()" class="date-input" />
+      <input type="date" [(ngModel)]="toDate" (change)="applyFilter()" class="date-input" />
+    </div>
+
+    <button (click)="exportToCSV()" class="export-button">
+      <mat-icon>file_download</mat-icon> Export Excel
+    </button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-container">
+    <table class="activity-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Action</th>
+          <th>Timestamp</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let log of paginatedLogs">
+          <td>{{ log.id }}</td>
+          <td>{{ log.action }}</td>
+          <td>{{ log.timestamp | date:'short' }}</td>
+          <td>
+            <mat-icon class="type-icon">{{ getLogIcon(log) }}</mat-icon>
+            <span [ngClass]="getLogClass(log)">{{ log.type }}</span>
+          </td>
+          <td>
+            <button mat-icon-button (click)="editLog(log)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteLog(log)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button (click)="goToPage(page - 1)" [disabled]="page === 1">Prev</button>
+
+    <button *ngIf="hasLeftEllipsis()" disabled>...</button>
+
+    <button *ngFor="let p of getPageNumbers()" (click)="goToPage(p)" [class.active]="p === page">
+      {{ p }}
+    </button>
+
+    <button *ngIf="hasRightEllipsis()" disabled>...</button>
+
+    <button (click)="goToPage(page + 1)" [disabled]="page === totalPages">Next</button>
+  </div>
+</div>

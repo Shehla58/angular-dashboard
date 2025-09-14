@@ -1,0 +1,43 @@
+
+
+<mat-card class="settings-card">
+  <h2 class="settings-title">⚙️ Settings</h2>
+
+  <!-- Notifications Toggle -->
+  <section class="setting-section">
+    <label class="section-label">🔔 Notifications</label>
+    <mat-slide-toggle [(ngModel)]="notificationsEnabled">
+      Enable Notifications
+    </mat-slide-toggle>
+  </section>
+
+  <!-- Language Selector -->
+  <section class="setting-section">
+    <label class="section-label">🌐 Language</label>
+    <select class="language-dropdown" [(ngModel)]="language">
+      <option value="en">English</option>
+      <option value="ur">Urdu</option>
+      <option value="es">Spanish</option>
+    </select>
+  </section>
+
+  <!-- Dark Mode -->
+  <section class="setting-section">
+    <label class="section-label">🌙 Theme</label>
+    <mat-slide-toggle [(ngModel)]="darkMode">
+      Enable Dark Mode
+    </mat-slide-toggle>
+  </section>
+
+  <!-- 2FA Toggle -->
+  <section class="setting-section">
+    <app-two-factor-auth></app-two-factor-auth>
+  </section>
+
+  <!-- Save Button -->
+  <div class="button-section">
+    <button mat-raised-button color="primary" (click)="updateSettings()">
+      💾 Save Changes
+    </button>
+  </div>
+</mat-card>
